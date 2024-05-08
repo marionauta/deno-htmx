@@ -13,8 +13,9 @@ export type HtmxResponseOptions = {
 };
 
 export type HtmxResponse<Body> = {
-  body: Body;
+  body: Body | null;
   options?: HtmxResponseOptions;
+  init?: ResponseInit;
 };
 
 export type HtmxServeHandler<Body> = (
