@@ -1,4 +1,4 @@
-import { HtmxResponse } from "./types.ts";
+import type { HtmxResponse, HtmxServeHandler } from "./types.ts";
 
 export function htmxResponseToStandard<Body>(
   stringifyBody: (body: Body) => string,
@@ -11,5 +11,14 @@ export function htmxResponseToStandard<Body>(
       headers.append("hx-reswap", response.options.reswap);
     }
     return new Response(body, { ...response.init, headers });
+  };
+}
+
+export function htmxServe<Body>(stringifyBody: (body: Body) => string) {
+  return function (handler: HtmxServeHandler<Body>): Deno.ServeHandler {
+    return async function (request, info) {
+      const response = await handler(request, info);
+      return htmxResponseToStandard(stringifyBody)(response);
+    };
   };
 }
