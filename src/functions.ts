@@ -3,7 +3,7 @@ import { HtmxResponse } from "./types.ts";
 export function htmxResponseToStandard<Body>(
   stringifyBody: (body: Body) => string,
 ): (response: HtmxResponse<Body>) => Response {
-  return function(response) {
+  return function (response) {
     const body = stringifyBody(response.body);
     const headers = new Headers({
       "content-type": "text/html; charset=utf-8",
