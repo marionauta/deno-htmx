@@ -1,5 +1,5 @@
 export type * from "../types.ts";
-import { JSX } from "https://esm.sh/react@18.3.1";
+import type { JSX } from "https://esm.sh/react@18.3.1";
 import type {
   HtmxResponse as HtmxResponseBase,
   HtmxServeHandler as HtmxServeHandlerBase,
