@@ -8,7 +8,7 @@ export function htmxResponseToStandard<Body>(
     const headers = new Headers(response.init?.headers);
     headers.set("content-type", "text/html; charset=utf-8");
     if (response.options?.reswap) {
-      headers.append("hx-reswap", response.options.reswap);
+      headers.append("HX-Reswap", response.options.reswap);
     }
     return new Response(body, { ...response.init, headers });
   };
