@@ -10,6 +10,7 @@ export type ReswapOption =
 
 export type HtmxResponseOptions = {
   reswap?: ReswapOption;
+  retarget?: string;
 };
 
 export type HtmxResponse<Body> = {

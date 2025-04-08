@@ -10,6 +10,9 @@ export function htmxResponseToStandard<Body>(
     if (response.options?.reswap) {
       headers.append("HX-Reswap", response.options.reswap);
     }
+    if (response.options?.retarget) {
+      headers.append("HX-Retarget", response.options.retarget);
+    }
     return new Response(body, { ...response.init, headers });
   };
 }
